@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MaeveInput from 'maeve-input';
 import { connect } from 'react-redux';
 import api from '../../api.js';
+import './PlanetsContainer.css';
 
 class PlanetsContainer extends Component {
   constructor() {
@@ -24,8 +25,24 @@ class PlanetsContainer extends Component {
         }
       });
   }
+  getRelativeWidths() {
+    const planets = this.state.planets;
+    let totalPopulation = 0;
+    planets.map((planet) => {
+      if(planet.population !== 'unknown') {
+        totalPopulation += parseInt(planet.population);
+      }
+    });
+    planets.map((planet) => {
+      if(planet.population !== 'unknown') {
+        planet.percentWidth = (parseInt(planet.population) / totalPopulation) * 100;
+      } else {
+        planet.percentWidth = 0;
+      }
+    });
+  }
   render() {
-    console.log(this.state.planets);
+    this.getRelativeWidths();
     return (
       <div className="Planets-container">
         <MaeveInput
@@ -33,11 +50,22 @@ class PlanetsContainer extends Component {
           onValueUpdate={this.getPlanets}
           throttle={100}
         />
+        <div className="planets-div">
         {
           this.state.planets.map((planet, keyPair) =>
-            <div key={keyPair} className="planet-item">{planet.name}</div>
+            <div
+              style={
+                {
+                  height: `${planet.percentWidth}%`,
+                }
+              }
+              key={keyPair}
+              className="planet-item">
+                {planet.name}
+              </div>
           )
         }
+        </div>
       </div>
     );
   }
