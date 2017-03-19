@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import checkCreds from '../../actions/userActions.js';
-import './Login.css';
+import './login.css';
 
 class LoginContainer extends Component {
   constructor() {
@@ -23,17 +23,17 @@ class LoginContainer extends Component {
     return (
       <div className="login-container">
         <form onSubmit={ this.submitForm }>
-          <input 
-            type="text" 
-            name="username" 
-            value={this.state.username} 
-            onChange={this.handleChange} 
+          <input
+            type="text"
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChange}
           />
-          <input 
-            type="password" 
-            name="password" 
-            value={this.state.password} 
-            onChange={this.handleChange} 
+          <input
+            type="password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange}
           />
           <input type="submit" value="Login" />
         </form>
