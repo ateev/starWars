@@ -19,3 +19,7 @@ input#planetsSearch {
     top: 50%;
     transform: translateY(-50%);
 }
+.Planets-container .error {
+    color: red;
+    margin: 50px;
+}

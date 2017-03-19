@@ -14,7 +14,7 @@ class MainContainer extends Component {
     const userName = readBrowserCookie('LoggedIn username')[0];
     let appBlock;
     if(typeof userName !== 'undefined') {
-      appBlock = <PlanetsContainer />;
+      appBlock = <PlanetsContainer userName={userName} />;
     } else {
       appBlock = <Login submitCallback={ this.loginUser } />
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MaeveInput from 'maeve-input';
 import { connect } from 'react-redux';
+import { readBrowserCookie, setBrowserCookie } from '../../helpers/cookieHandler.js';
 import api from '../../api.js';
 import './PlanetsContainer.css';
 
@@ -11,19 +12,42 @@ class PlanetsContainer extends Component {
       planets: [],
     };
   }
+  overRateLimit() {
+    const userName = this.props.userName;
+    if(userName !== 'Luke Skywalker') {
+      const currentAPICalls = parseInt(readBrowserCookie('api-count')[0]) || 0;
+      if(currentAPICalls >= 15) {
+        return true;
+      } else {
+        currentAPICalls += 1;
+        setBrowserCookie('api-count', currentAPICalls, (1/(24*60)) )
+        console.log(currentAPICalls);
+        return false;
+      }
+    }
+  }
   getPlanets = (name, id) => {
-    api.getPlanetsByName(name)
-      .end((err, res) => {
-        if(res.body.results.length !== 0) {
-          this.setState({
-            planets: res.body.results,
-          });
-        } else {
-          this.setState({
-            planets: [],
-          });
-        }
-      });
+    if(this.overRateLimit() === false) {
+      api.getPlanetsByName(name, this.props.userName)
+        .end((err, res) => {
+          if(res.body.results.length !== 0) {
+            this.setState({
+              planets: res.body.results,
+              error: "",
+            });
+          } else {
+            this.setState({
+              planets: [],
+              error: "",
+            });
+          }
+        });
+    } else {
+      this.setState({
+        error: "Requests per minute exceeded",
+      })
+    }
+
   }
   getRelativeWidths() {
     const planets = this.state.planets;
@@ -49,7 +73,11 @@ class PlanetsContainer extends Component {
           id="planetsSearch"
           onValueUpdate={this.getPlanets}
           throttle={100}
+          placeholder="Planet name"
         />
+        <div className="error">
+          {this.state.error}
+        </div>
         <div className="planets-div">
         {
           this.state.planets.map((planet, keyPair) =>
