@@ -24,6 +24,8 @@ class PlanetsContainer extends Component {
         console.log(currentAPICalls);
         return false;
       }
+    } else {
+      return false;
     }
   }
   getPlanets = (name, id) => {
