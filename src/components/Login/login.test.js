@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Login from './Login.js';
 
 describe('<Login />', () => {
@@ -8,5 +8,13 @@ describe('<Login />', () => {
             <Login />
         );
         expect(component).toMatchSnapshot();
+    });
+    it('should call callblack on form submit', () => {
+        const submitCallback = jest.fn();
+        const component = mount(
+            <Login submitCallback={submitCallback} />
+        );
+        component.find('[type="submit"]').get(0).click();
+        expect(submitCallback).toHaveBeenCalled();
     });
 })
