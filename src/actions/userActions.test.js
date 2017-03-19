@@ -27,8 +27,11 @@ describe('User Actions', () => {
         password: '123',
         user,
     }];
+    const sampleBody = {
+      results: [user]
+    };
     const store = mockStore({});
-    api.getUserByName.mockImplementation(() => ({ end: cb => cb(null, { body: user }) }));
+    api.getUserByName.mockImplementation(() => ({ end: cb => cb(null, { body: sampleBody }) }));
     store.dispatch(checkCreds('luke', '123', user));
     expect(store.getActions()).toEqual(expectedActions);
   });
