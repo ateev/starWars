@@ -30,7 +30,13 @@ class PlanetsContainer extends Component {
   }
   getPlanets = (name, id) => {
     if(this.overRateLimit() === false) {
-      api.getPlanetsByName(name, this.props.userName)
+      if(name.length === 0 ) {
+        this.setState({
+          planets: [],
+          error: "",
+        });
+      } else {
+        api.getPlanetsByName(name, this.props.userName)
         .end((err, res) => {
           if(res.body.results.length !== 0) {
             this.setState({
@@ -44,14 +50,14 @@ class PlanetsContainer extends Component {
             });
           }
         });
+      }
     } else {
       this.setState({
         error: "Requests per minute exceeded",
       })
     }
-
   }
-  getRelativeWidths() {
+  getRelativeHeights() {
     const planets = this.state.planets;
     let totalPopulation = 0;
     planets.map((planet) => {
@@ -61,20 +67,22 @@ class PlanetsContainer extends Component {
     });
     planets.map((planet) => {
       if(planet.population !== 'unknown') {
-        planet.percentWidth = (parseInt(planet.population) / totalPopulation) * 100;
+        planet.percentHeight = (parseInt(planet.population) / totalPopulation) * 100;
+        planet.percentHeight = planet.percentHeight < 1 ? 1 : planet.percentHeight;
       } else {
-        planet.percentWidth = 0;
+        planet.percentHeight = 1;
       }
+      console.log(planet.percentHeight);
     });
   }
   render() {
-    this.getRelativeWidths();
+    this.getRelativeHeights();
     return (
       <div className="Planets-container">
         <MaeveInput
           id="planetsSearch"
           onValueUpdate={this.getPlanets}
-          throttle={100}
+          throttle={40}
           placeholder="Planet name"
         />
         <div className="error">
@@ -86,14 +94,14 @@ class PlanetsContainer extends Component {
             <div
               style={
                 {
-                  height: `${planet.percentWidth}%`,
+                  height: `${planet.percentHeight}%`,
                 }
               }
               key={keyPair}
               className="planet-item">
-                <span className="planet-name">
-                  {planet.name}
-                </span>
+                <div className="planet-name">
+                  {planet.name} - {planet.population} Population.
+                </div>
               </div>
           )
         }

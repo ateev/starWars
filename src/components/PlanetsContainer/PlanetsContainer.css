@@ -1,5 +1,4 @@
 .planet-item {
-    padding: 20px;
     margin: 20px;
     width: 75%;
     background: #cfced0;
@@ -18,6 +17,7 @@ input#planetsSearch {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    color: #504b54;
 }
 .Planets-container .error {
     color: red;
