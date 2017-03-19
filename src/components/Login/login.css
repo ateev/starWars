@@ -3,7 +3,6 @@
   margin: 0 auto;
   margin-top: 40px;
 }
-
 .login-container input {
   padding: 5px 15px;
   margin: 0 auto;
@@ -17,4 +16,10 @@ input[type="submit"] {
   height: 30px;
   background: #222222;
   color: #fff;
+  cursor: pointer;
+}
+.form-title {
+  padding: 40px;
+  color: #222222;
+  font-size: 20px;
 }

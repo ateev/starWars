@@ -22,6 +22,7 @@ class LoginContainer extends Component {
     return (
       <div className="login-container">
         <form onSubmit={ this.submitForm }>
+          <div className="form-title">Use the force, luke</div>
           <input
             type="text"
             name="username"
