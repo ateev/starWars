@@ -6,3 +6,8 @@
 .planets-div {
   height: 1000px;
 }
+input#planetsSearch {
+    width: 50%;
+    font-size: 16px;
+    padding: 5px 10px;
+}

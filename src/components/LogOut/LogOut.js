@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { deleteCookie } from '../../helpers/cookieHandler.js';
 import { logoutUser } from '../../actions/userActions.js';
 import { connect } from 'react-redux';
+import './LogOut.css';
 
 export class LogOut extends Component {
   logout = () => {
@@ -11,7 +12,7 @@ export class LogOut extends Component {
     return (
         <div className="Log-out">
             <a onClick={this.logout} >Logout</a>
-        </div>   
+        </div>
     );
   }
 }

@@ -1,0 +1,10 @@
+.login-container{
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.login-container input {
+  margin: 10px 40%;
+  padding: 5px 15px;
+}
