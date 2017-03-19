@@ -61,7 +61,9 @@ class PlanetsContainer extends Component {
               }
               key={keyPair}
               className="planet-item">
-                {planet.name}
+                <span className="planet-name">
+                  {planet.name}
+                </span>
               </div>
           )
         }
