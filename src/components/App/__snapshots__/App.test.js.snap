@@ -24,6 +24,7 @@ ShallowWrapper {
                 className="App-title">
                 Star Wars Paradise
             </div>
+            <Connect(LogOut) />
         </div>
         <Connect(MainContainer) />
     </div>
@@ -47,6 +48,7 @@ ShallowWrapper {
                         className="App-title">
                         Star Wars Paradise
                   </div>
+                  <Connect(LogOut) />
             </div>
             <Connect(MainContainer) />
       </div>
@@ -111,6 +113,7 @@ ShallowWrapper {
                                         className="App-title">
                                         Star Wars Paradise
                               </div>
+                              <Connect(LogOut) />
                     </div>
                     <Connect(MainContainer) />
           </div>
@@ -134,6 +137,7 @@ ShallowWrapper {
                                         className="App-title">
                                         Star Wars Paradise
                               </div>
+                              <Connect(LogOut) />
                     </div>
                     <Connect(MainContainer) />
           </div>

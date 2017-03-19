@@ -8,9 +8,13 @@ export class LogOut extends Component {
     this.context.store.dispatch(logoutUser());
   }
   render() {
+    const isLoggedIn = this.props.user.name !== undefined;
     return (
         <div className="Log-out">
+            { isLoggedIn === true ?
             <a onClick={this.logout} >Logout</a>
+            : null
+            }
         </div>
     );
   }
