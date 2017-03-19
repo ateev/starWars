@@ -1,6 +1,3 @@
-import Cookies from 'cookies';
-import uuid from 'uuid';
-
 export function readBrowserCookie(cookieName) {
   if (typeof document !== 'undefined') {
     const d = [];

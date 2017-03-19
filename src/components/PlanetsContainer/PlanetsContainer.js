@@ -15,7 +15,7 @@ class PlanetsContainer extends Component {
   overRateLimit() {
     const userName = this.props.userName;
     if(userName !== 'Luke Skywalker') {
-      const currentAPICalls = parseInt(readBrowserCookie('api-count')[0]) || 0;
+      let currentAPICalls = parseInt(readBrowserCookie('api-count')[0], 10) || 0;
       if(currentAPICalls >= 15) {
         return true;
       } else {
@@ -62,17 +62,18 @@ class PlanetsContainer extends Component {
     let totalPopulation = 0;
     planets.map((planet) => {
       if(planet.population !== 'unknown') {
-        totalPopulation += parseInt(planet.population);
+        totalPopulation += parseInt(planet.population, 10);
       }
+      return planet;
     });
     planets.map((planet) => {
       if(planet.population !== 'unknown') {
-        planet.percentHeight = (parseInt(planet.population) / totalPopulation) * 100;
+        planet.percentHeight = (parseInt(planet.population, 10) / totalPopulation) * 100;
         planet.percentHeight = planet.percentHeight < 1 ? 1 : planet.percentHeight;
       } else {
         planet.percentHeight = 1;
       }
-      console.log(planet.percentHeight);
+      return planet;
     });
   }
   render() {
@@ -83,7 +84,7 @@ class PlanetsContainer extends Component {
           id="planetsSearch"
           onValueUpdate={this.getPlanets}
           throttle={40}
-          placeholder="Planet name"
+          placeholder="A long time ago in a galaxy far, far away… "
         />
         <div className="error">
           {this.state.error}

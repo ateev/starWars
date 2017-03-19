@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import checkCreds from '../../actions/userActions.js';
 import './login.css';
 
 class LoginContainer extends Component {

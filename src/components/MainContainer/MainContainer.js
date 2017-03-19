@@ -3,7 +3,6 @@ import { readBrowserCookie } from '../../helpers/cookieHandler.js';
 import { checkCreds } from '../../actions/userActions.js';
 import Login from '../Login/login.js';
 import PlanetsContainer from '../PlanetsContainer/PlanetsContainer';
-import { getUserId } from '../../loginManager.js';
 import { connect } from 'react-redux';
 
 class MainContainer extends Component {

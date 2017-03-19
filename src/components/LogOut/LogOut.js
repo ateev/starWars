@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { deleteCookie } from '../../helpers/cookieHandler.js';
 import { logoutUser } from '../../actions/userActions.js';
 import { connect } from 'react-redux';
 import './LogOut.css';
