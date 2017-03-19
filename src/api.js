@@ -12,7 +12,7 @@ const api = {
   },
 
   getPlanetsByName(name) {
-    const apiUrl = `http://swapi.co/api/planets`;
+    const apiUrl = `http://swapi.co/api/planets/`;
     const params = {
       search: name,
     };
