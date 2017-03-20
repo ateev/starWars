@@ -17,7 +17,16 @@ ShallowWrapper {
       "_compositeType": 0,
       "_context": Object {},
       "_currentElement": <Provider
-        store={[Function]}>
+        store={
+                Object {
+                        "clearActions": [Function],
+                        "dispatch": [Function],
+                        "getActions": [Function],
+                        "getState": [Function],
+                        "replaceReducer": [Function],
+                        "subscribe": [Function],
+                      }
+        }>
         <Connect(PlanetsContainer) />
 </Provider>,
       "_debugID": 1,
@@ -28,11 +37,25 @@ ShallowWrapper {
         "context": Object {},
         "props": Object {
           "children": <Connect(PlanetsContainer) />,
-          "store": [Function],
+          "store": Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          },
         },
         "refs": Object {},
         "state": null,
-        "store": [Function],
+        "store": Object {
+          "clearActions": [Function],
+          "dispatch": [Function],
+          "getActions": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+        },
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -66,7 +89,16 @@ ShallowWrapper {
   },
   "root": [Circular],
   "unrendered": <Provider
-    store={[Function]}>
+    store={
+        Object {
+            "clearActions": [Function],
+            "dispatch": [Function],
+            "getActions": [Function],
+            "getState": [Function],
+            "replaceReducer": [Function],
+            "subscribe": [Function],
+          }
+    }>
     <Connect(PlanetsContainer) />
 </Provider>,
 }
